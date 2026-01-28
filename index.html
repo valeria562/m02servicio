@@ -6,23 +6,23 @@
 </head>
 <body>
 
-<h2>Servicio PHP</h2>
+    <h2>Servicio PHP – Nombre del estudiante</h2>
 
-<button onclick="obtenerNombre()">Mostrar mi nombre</button>
+    <button onclick="obtenerNombre()">Obtener nombre</button>
 
-<script>
-function obtenerNombre() {
-    fetch("http://valeria-.great-site.net/nombre.php")
-        .then(res => res.json())
-        .then(data => {
-            alert("Nombre del estudiante: " + data.nombre);
-        })
-        .catch(err => {
-            alert("Error al obtener el nombre");
-            console.error(err);
-        });
-}
-</script>
+    <script>
+        function obtenerNombre() {
+            fetch("http://valeria-servicio.great-site.net/nombre.php")
+                .then(response => response.json())
+                .then(data => {
+                    alert("Nombre recibido: " + data.nombre);
+                })
+                .catch(error => {
+                    alert("Error al conectar con el servicio PHP");
+                    console.error(error);
+                });
+        }
+    </script>
 
 </body>
 </html>
