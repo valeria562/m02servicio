@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Servicio PHP</title>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width">
+
+ <title>Ejemplo de servicio</title>
+
 </head>
+
 <body>
+ <h1>Ejemplo de servicio</h1>
 
-    <h2>Servicio PHP – Nombre del estudiante</h2>
+ <button onclick="ejecuta()">
+  Ejecuta
+ </button>
 
-    <button onclick="obtenerNombre()">Obtener nombre</button>
+ <script>
 
-    <script>
-        function obtenerNombre() {
-            fetch("http://valeria-servicio.great-site.net/nombre.php")
-                .then(response => response.json())
-                .then(data => {
-                    alert("Nombre recibido: " + data.nombre);
-                })
-                .catch(error => {
-                    alert("Error al conectar con el servicio PHP");
-                    console.error(error);
-                });
-        }
-    </script>
+  async function ejecuta() {
+   try {
+    // Se conecta a servicio.php y recibe su respuesta.
+    const resp =
+     await fetch("servicio.php")
+    if (resp.ok) {
+     const texto =
+      await resp.text()
+     alert(texto)
+    } else {
+     throw new Error(
+      resp.statusText)
+    }
+   } catch (error) {
+    console.error(error)
+    alert(error.message)
+   }
+  }
+
+ </script>
 
 </body>
+
 </html>
